@@ -3,11 +3,10 @@ const mysql = require('mysql');
 
 // connection configurations
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    port: 3306,
-    database: 'SISLMP_BD'
+    host: 'us-cdbr-iron-east-01.cleardb.net',
+    user: 'b034334d60b740',
+    password: 'eb83d4bc',
+    database: 'heroku_ef049c76cfde467'
 });
  
 // connect to database
