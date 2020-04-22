@@ -48,7 +48,7 @@ app.delete('/role/delete/:id', deleteRole)
 
 // See the react auth blog in which cors is required for access
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3006');
     res.setHeader('Access-Control-Allow-Headers', 'Content-type,Authorization');
     next();
 });
