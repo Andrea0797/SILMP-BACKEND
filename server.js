@@ -73,8 +73,9 @@ router.get('/home',function(req,res){
     res.send('Token Verified')
 })
 // port must be set to 8080 because incoming http requests are routed from port 80 to port 8080
-app.listen(8080, function () {
-    console.log('app node corre en en puerto 8080');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
 });
  
 // allows "grunt dev" to create a development server with livereload
