@@ -73,7 +73,7 @@ router.get('/home',function(req,res){
     res.send('Token Verified')
 })
 // port must be set to 8080 because incoming http requests are routed from port 80 to port 8080
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3006;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
