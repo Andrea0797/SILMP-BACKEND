@@ -6,6 +6,7 @@ module.exports = {
         var user = {
             username:req.body.username,
             password:req.body.password,
+            rol:""
         }
         db.query('SELECT * FROM users WHERE username = ?',[user.username], function (error, results, fields) {
           if (error) {
@@ -17,9 +18,11 @@ module.exports = {
             console.log(results);
             if(results.length >0){
                 if(user.password===results[0].password){
+                    user.rol = res.Rol;
                     var token=jwt.sign(user,process.env.SECRET_KEY,{
                         expiresIn:5000
                     });
+                    
                     res.json({
                         status:true,
                         token:token,
