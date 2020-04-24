@@ -15,10 +15,9 @@ module.exports = {
                 message:'error with query'
                 })
           }else{
-            console.log(results);
             if(results.length >0){
                 if(user.password===results[0].password){
-                    user.rol = res.Rol;
+                    user.rol = results[0].Rol;
                     var token=jwt.sign(user,process.env.SECRET_KEY,{
                         expiresIn:5000
                     });
