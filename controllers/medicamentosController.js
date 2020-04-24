@@ -14,7 +14,7 @@ module.exports = {
         db.query('SELECT * FROM Medicamentos where Nro_Registro=?', codigo, function (error, results, fields) {
             
             if (error) throw error;
-            return res.send({ error: false, data: results[0], message: 'Listado.' });
+            return res.send({ error: false,count: results.length, data: results[0], message: 'Listado.' });
         });
     },
  
