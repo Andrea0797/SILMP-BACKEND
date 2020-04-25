@@ -16,7 +16,7 @@ module.exports = {
     },
     getMedicamentoDetalle(req, res){
         let codigo = req.params.codigo;
-        db.query('SELECT * FROM Medicamentos where Nro_Registro=?', codigo, function (error, results, fields) {
+        db.query('select * from Medicamentos_TB A inner join DIGEMID_DATA B on A.id_digemid = B.id where Lote=?', codigo, function (error, results, fields) {
             
             if (error) throw error;
             return res.send({ error: false,count: results.length, data: results[0], message: 'Listado.' });
