@@ -31,7 +31,7 @@ module.exports = {
         });
     },
     addMed(req,res){
-        let med = req.body.med;
+        let med = req.body;
         
         if (!med) {
             return res.status(400).send({ error:true, message: 'Please provide task' });
