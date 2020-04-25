@@ -25,7 +25,7 @@ app.get('/', function (req, res) {
 });
 app.get('/getUsuarios', getUsers);
 app.get('/medicamentos', allTodos);
-app.get('/medicamentos/filtrar', searchMedicamento);
+app.get('/medicamentos/filtrar/:filter', searchMedicamento);
 app.post('/medicamentos/save', addMed);
 app.post('/getUsuarios/save', addUser);
 app.get('/getUsuarios/search/:keyword', searchUser);

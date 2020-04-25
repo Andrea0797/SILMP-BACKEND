@@ -49,12 +49,18 @@ module.exports = {
     },
 
     searchMedicamento(req, res){
-        var cadena = (req.params);
-        // db.query("select * from Medicamentos_TB A inner join DIGEMID_DATA B on A.id_digemid = B.id WHERE Nombre_Comercial LIKE ? or Nro_Registro like ? or Lote LIKE ? or FechaVencimiento like ?", ['%' + filter.nombre + '%','%' + filter.nro + '%', '%' + filter.lote + '%','%' + filter.fecha + '%'], function (error, results, fields) {
-        //     console.log(results);
-        //     if (error) throw error;
-        //     return res.send({ error: false, data: results, message: 'Todos search list.' });
-        // });
+        var cadena = (req.params.filter);
+        var aux =cadena.split(",");
+        let v0 = aux[0];
+        let v1 = aux[1];
+        let v2 = aux[2];
+        let v3 = aux[3];
+        console.log(cadena);
+        db.query("select * from Medicamentos_TB A inner join DIGEMID_DATA B on A.id_digemid = B.id WHERE Nombre_Comercial LIKE ? or Nro_Registro like ? or Lote LIKE ? or FechaVencimiento like ?", ['%' + v0 + '%','%' + v1 + '%', '%' + v2 + '%','%' + v3 + '%'], function (error, results, fields) {
+      
+            if (error) throw error;
+            return res.send({ error: false, data: results, message: 'Todos search list.' });
+        });
     },
 
     updateTask(req, res){
