@@ -3,7 +3,7 @@ var db = require('../db');
 module.exports = {
     // Retrieve all todos 
     allTodos (req, res) {
-        db.query('SELECT * FROM Medicamentos', function (error, results, fields) {
+        db.query('SELECT * FROM DIGEMID_DATA', function (error, results, fields) {
             if (error) throw error;
             return res.send({ error: false, data: results, message: 'Todos list.' });
         });
@@ -25,7 +25,7 @@ module.exports = {
             return res.status(400).send({ error:true, message: 'Please provide task' });
         }
     
-        db.query("INSERT INTO tasks SET ? ", { task: task }, function (error, results, fields) {
+        db.query("INSERT INTO Medicamentos SET ? ", { task: task }, function (error, results, fields) {
             if (error) throw error;
             return res.send({ error: false, data: results, message: 'Nuevo registro agregado.' });
         });

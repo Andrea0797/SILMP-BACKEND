@@ -28,6 +28,7 @@ app.post('/getUsuarios/save', addUser);
 app.get('/getUsuarios/search/:keyword', searchUser);
 app.get('/Consultar/:codigo', getMedicamentoDetalle);
 app.put('/getUsuarios/update/:id', updateUser);
+app.put('/digemid', allTodos);
 app.delete('/getUsuarios/delete/:id', deleteUser);
 app.get('/editarUsuario/:id', getUsuario);
 
