@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-const {allTodos, addTask , searchTask, getMedicamentoDetalle, updateTask, deleteTask} = require('./controllers/medicamentosController');
+const {allTodos, addMed , searchTask, getMedicamentoDetalle, updateTask, deleteTask} = require('./controllers/medicamentosController');
 const {getUsers, addUser , searchUser, updateUser, deleteUser, getUsuario} = require('./controllers/usuarioController');
 const {register} = require ('./controllers/registerController')
 const { authenticate } = require ('./controllers/authenticateController')
@@ -24,6 +24,7 @@ app.get('/', function (req, res) {
     return res.send({ error: true, message: 'hello' })
 });
 app.get('/getUsuarios', getUsers);
+app.post('/medicamentos/save', addMed);
 app.post('/getUsuarios/save', addUser);
 app.get('/getUsuarios/search/:keyword', searchUser);
 app.get('/Consultar/:codigo', getMedicamentoDetalle);

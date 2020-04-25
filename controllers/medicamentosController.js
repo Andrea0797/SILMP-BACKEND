@@ -18,14 +18,26 @@ module.exports = {
         });
     },
  
-    addTask(req,res){
-        let task = req.body.task;
+    guardarMedicamento(req, res){
+        let med = req.body.med;
         
-        if (!task) {
-            return res.status(400).send({ error:true, message: 'Please provide task' });
+        if (!med) {
+            return res.status(400).send({ error:true, message: 'Please provide med' });
         }
     
-        db.query("INSERT INTO Medicamentos SET ? ", { task: task }, function (error, results, fields) {
+        db.query("INSERT INTO Medicamentos_TB SET ? ", { task: task }, function (error, results, fields) {
+            if (error) throw error;
+            return res.send({ error: false, data: results, message: 'Nuevo registro agregado.' });
+        });
+    },
+    addMed(req,res){
+        let med = req.body.med;
+        
+        if (!med) {
+            return res.status(400).send({ error:true, message: 'Please provide task' });
+        }
+        console.log(med);
+        db.query("INSERT INTO Medicamentos_TB (id_digemid,Lote,FechaVencimiento,IMG_URL) values (?,?,?,?) ", [med.id_digemid,med.Lote,med.FechaVencimiento,usr.IMG_URL], function (error, results, fields) {
             if (error) throw error;
             return res.send({ error: false, data: results, message: 'Nuevo registro agregado.' });
         });
