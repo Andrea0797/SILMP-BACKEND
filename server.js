@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-const {allTodos, addMed , searchTask, getMedicamentoDetalle, updateTask, deleteTask} = require('./controllers/medicamentosController');
+const {allTodos,allTodosCombo, addMed , searchTask, getMedicamentoDetalle, updateTask, deleteTask} = require('./controllers/medicamentosController');
 const {getUsers, addUser , searchUser, updateUser, deleteUser, getUsuario} = require('./controllers/usuarioController');
 const {register} = require ('./controllers/registerController')
 const { authenticate } = require ('./controllers/authenticateController')
@@ -30,7 +30,7 @@ app.post('/getUsuarios/save', addUser);
 app.get('/getUsuarios/search/:keyword', searchUser);
 app.get('/Consultar/:codigo', getMedicamentoDetalle);
 app.put('/getUsuarios/update/:id', updateUser);
-app.get('/digemid', allTodos);
+app.get('/digemid', allTodosCombo);
 app.delete('/getUsuarios/delete/:id', deleteUser);
 app.get('/editarUsuario/:id', getUsuario);
 

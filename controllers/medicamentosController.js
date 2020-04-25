@@ -8,7 +8,12 @@ module.exports = {
             return res.send({ error: false, data: results, message: 'Todos list.' });
         });
     },
-
+    allTodosCombo (req, res) {
+        db.query('select * from DIGEMID_DATA', function (error, results, fields) {
+            if (error) throw error;
+            return res.send({ error: false, data: results, message: 'Todos list.' });
+        });
+    },
     getMedicamentoDetalle(req, res){
         let codigo = req.params.codigo;
         db.query('SELECT * FROM Medicamentos where Nro_Registro=?', codigo, function (error, results, fields) {
