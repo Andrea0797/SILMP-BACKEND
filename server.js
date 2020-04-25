@@ -24,6 +24,7 @@ app.get('/', function (req, res) {
     return res.send({ error: true, message: 'hello' })
 });
 app.get('/getUsuarios', getUsers);
+app.get('/medicamentos', allTodos);
 app.post('/medicamentos/save', addMed);
 app.post('/getUsuarios/save', addUser);
 app.get('/getUsuarios/search/:keyword', searchUser);

@@ -3,7 +3,7 @@ var db = require('../db');
 module.exports = {
     // Retrieve all todos 
     allTodos (req, res) {
-        db.query('SELECT * FROM DIGEMID_DATA', function (error, results, fields) {
+        db.query('select * from Medicamentos_TB A inner join DIGEMID_DATA B on A.id_digemid = B.id', function (error, results, fields) {
             if (error) throw error;
             return res.send({ error: false, data: results, message: 'Todos list.' });
         });
@@ -32,12 +32,12 @@ module.exports = {
     },
     addMed(req,res){
         let med = req.body;
-        
+        console.log(med);
         if (!med) {
             return res.status(400).send({ error:true, message: 'Please provide task' });
         }
         console.log(med);
-        db.query("INSERT INTO Medicamentos_TB (id_digemid,Lote,FechaVencimiento,IMG_URL) values (?,?,?,?) ", [med.id_digemid,med.Lote,med.FechaVencimiento,usr.IMG_URL], function (error, results, fields) {
+        db.query("INSERT INTO Medicamentos_TB (id_digemid,Lote,FechaVencimiento,IMG_URL) values (?,?,?,?) ", [med.id_digemid,med.Lote,med.FechaVencimiento,med.IMG_URL], function (error, results, fields) {
             if (error) throw error;
             return res.send({ error: false, data: results, message: 'Nuevo registro agregado.' });
         });
