@@ -48,9 +48,10 @@ module.exports = {
         });
     },
 
-    searchTask(req, res){
-        let keyword = req.params.keyword;
-        db.query("SELECT * FROM Medicamentos WHERE task LIKE ? ", ['%' + keyword + '%'], function (error, results, fields) {
+    searchMedicamento(req, res){
+        var filter = req.body;
+        db.query("select * from Medicamentos_TB A inner join DIGEMID_DATA B on A.id_digemid = B.id WHERE Nombre_Comercial LIKE ? or Nro_Registro like ? or Lote LIKE ? or FechaVencimiento like ?", ['%' + filter.nombre + '%','%' + filter.nro + '%', '%' + filter.lote + '%','%' + filter.fecha + '%'], function (error, results, fields) {
+            console.log(results);
             if (error) throw error;
             return res.send({ error: false, data: results, message: 'Todos search list.' });
         });
