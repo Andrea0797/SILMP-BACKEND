@@ -24,7 +24,7 @@ module.exports = {
             return res.status(400).send({ error:true, message: 'Please provide task' });
         }
     
-        db.query("INSERT INTO users (Nombre,Codigo,username,Rol,password,RUC,Direccion, Email,Creacion) values (?,?,?,?,?,?,?,?,?) ", [usr.Nombre,usr.Codigo,usr.Username,usr.Rol,"Peru2020",usr.RUC,usr.Direccion,usr.Email,new Date()], function (error, results, fields) {
+        db.query("INSERT INTO users (Nombre,Codigo,username,Rol,password,RUC,Direccion, Email,Creacion,Empresa) values (?,?,?,?,?,?,?,?,?,?) ", [usr.Nombre,usr.Codigo,usr.Username,usr.Rol,"Peru2020",usr.RUC,usr.Direccion,usr.Email,new Date(),usr.Empresa], function (error, results, fields) {
             if (error) throw error;
             return res.send({ error: false, data: results, message: 'Nuevo registro agregado.' });
         });
@@ -38,7 +38,7 @@ module.exports = {
         let keyword2 = aux[1];
         console.log(keyword);
         console.log(keyword2);
-        db.query("SELECT * FROM users WHERE Nombre LIKE ? or Rol LIKE ? ", ['%' + keyword + '%','%' + keyword2 + '%'], function (error, results, fields) {
+        db.query("SELECT * FROM users WHERE Nombre LIKE ? or Rol LIKE ? or Codigo like ?", ['%' + keyword + '%','%' + keyword2 + '%', '%' + keyword + '%'], function (error, results, fields) {
             console.log(results);
             if (error) throw error;
             return res.send({ error: false, data: results, message: 'Todos search list.' });
